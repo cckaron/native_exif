@@ -128,8 +128,8 @@ class NativeExifPlugin: FlutterPlugin, MethodCallHandler {
             return
           }
 
-          exif.setAttribute(tag, value)
-          exif.saveAttributes()
+        exif.setAttribute(tag, String(value.getBytes(), "UTF-8"))
+        exif.saveAttributes()
 
           result.success(null)
         }
@@ -149,9 +149,9 @@ class NativeExifPlugin: FlutterPlugin, MethodCallHandler {
             return
           }
 
-          for (value in values) {
-            exif.setAttribute(value.key, value.value)
-          }
+        for (value in values) {
+          exif.setAttribute(value.key, String(value.value.getBytes(), "UTF-8"))
+        }
 
           exif.saveAttributes()
 
